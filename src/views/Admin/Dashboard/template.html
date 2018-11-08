@@ -1,0 +1,54 @@
+<div class="dashboard">
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <router-link
+      class="navbar-brand col-sm-3 col-md-2 mr-0"
+      to="/dashboard"
+    >
+      DASHBOARD
+    </router-link>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a
+          class="nav-link"
+          href="javascript:;"
+          @click="signout"
+        >Sign out</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <router-link
+                class="nav-link"
+                to="/product"
+              >
+                <span data-feather="file"></span>
+                Product
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link
+                class="nav-link"
+                to="/order"
+              >
+                <span data-feather="file"></span>
+                Order
+              </router-link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main
+        role="main"
+        class="col-md-9 ml-sm-auto col-lg-10 px-4"
+      >
+        <router-view></router-view>
+      </main>
+    </div>
+  </div>
+</div>
