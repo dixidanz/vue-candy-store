@@ -1,8 +1,13 @@
 <script>
 import axios from 'axios'
-
+import Alert from '@/components/Alert/index';
+import Pagination from '@/components/Pagination/index';
 export default {
   name: 'dashboard',
+  components: {
+    Alert,
+    Pagination
+  },
   methods: {
     signout() {
       const api = `${process.env.VUE_APP_APIPATH}/logout`

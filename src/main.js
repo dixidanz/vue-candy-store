@@ -3,9 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store/store'
 import axios from 'axios'
+import 'bootstrap'
+import currencyFilter from '@/filters/currencyFilter';
 
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
+Vue.filter('currency', currencyFilter)
 
 new Vue({
   router,
