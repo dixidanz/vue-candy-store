@@ -20,6 +20,5 @@
   }
 </script>
 
-<style lang="scss">
-  @import '~bootstrap/scss/bootstrap';
+<style lang="scss" src="@/assets/style/all.scss">
 </style>

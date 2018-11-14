@@ -1,10 +1,6 @@
 <script>
-import Navbar from '@/components/Navbar/index';
 export default {
-  name: 'index',
-  components: {
-    Navbar
-  }
+  name: 'navbar'
 }
 </script>
 
