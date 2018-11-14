@@ -5,10 +5,12 @@ import store from './store/store'
 import axios from 'axios'
 import 'bootstrap'
 import currencyFilter from '@/filters/currencyFilter';
+import timestamp from '@/filters/timestamp';
 
 Vue.config.productionTip = false
 axios.defaults.withCredentials = true
 Vue.filter('currency', currencyFilter)
+Vue.filter('timestamp', timestamp)
 
 new Vue({
   router,

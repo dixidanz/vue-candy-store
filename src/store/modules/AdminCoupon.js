@@ -8,34 +8,34 @@ export default ({
   strict: true,
   namespaced: true,
   state: {
-    products: [],
+    coupons: [],
     pagination: {},
   },
   mutations: {
-    getProduct: (state, products) => {
-      state.products = products
+    getCoupons: (state, coupons) => {
+      state.coupons = coupons
     },
     getPagination: (state, pagination) => {
       state.pagination = pagination
     },
   },
   actions: {
-    PRODUCTS_GET: ({ commit }, page = 1) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`
+    COUPONS_GET: ({ commit }, page = 1) => {
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupons?page=${page}`
       commit('updateLoading', true, { root: true })
       axios.get(api).then(res => {
         commit('updateLoading', false, { root: true })
         if (!res.data.success) return false
-        commit('getProduct', res.data.products)
+        commit('getCoupons', res.data.coupons)
         commit('getPagination', res.data.pagination)
       })
     },
-    PRODUCT_ADD: ({ dispatch }, tempProduct) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product`
+    COUPON_ADD: ({ dispatch }, tempCoupon) => {
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon`
 
-      axios.post(api, { data: tempProduct }).then(res => {
+      axios.post(api, { data: tempCoupon }).then(res => {
         if (!res.data.success) return false
-        dispatch('PRODUCTS_GET')
+        dispatch('COUPONS_GET')
         dispatch('ALERT_SHOW', {
           isAlert: true,
           status: 'success',
@@ -43,12 +43,12 @@ export default ({
         }, { root: true })
       })
     },
-    PRODUCT_EDIT: ({ dispatch }, tempProduct) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${tempProduct.id}`
+    COUPON_EDIT: ({ dispatch }, tempCoupon) => {
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${tempCoupon.id}`
 
-      axios.put(api, { data: tempProduct }).then(res => {
+      axios.put(api, { data: tempCoupon }).then(res => {
         if (!res.data.success) return false
-        dispatch('PRODUCTS_GET')
+        dispatch('COUPONS_GET')
         dispatch('ALERT_SHOW', {
           isAlert: true,
           status: 'success',
@@ -56,8 +56,8 @@ export default ({
         }, { root: true })
       })
     },
-    PRODUCT_REMOVE: ({ dispatch }, id) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${id}`
+    COUPON_REMOVE: ({ dispatch }, id) => {
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${id}`
 
       axios.delete(api).then(res => {
         if (!res.data.success)
@@ -66,7 +66,7 @@ export default ({
             status: 'danger',
             message: res.data.message
           }, { root: true })
-        dispatch('PRODUCTS_GET')
+        dispatch('COUPONS_GET')
         dispatch('ALERT_SHOW', {
           isAlert: true,
           status: 'success',
@@ -76,8 +76,8 @@ export default ({
     }
   },
   getters: {
-    products: state => {
-      return state.products
+    coupons: state => {
+      return state.coupons
     },
     pagination: state => {
       return state.pagination

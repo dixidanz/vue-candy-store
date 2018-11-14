@@ -1,12 +1,15 @@
 <script> 
 import $ from 'jquery'
 import axios from 'axios'
-import Loading from 'vue-loading-overlay';
+import { mapGetters } from 'vuex'
+import Loading from 'vue-loading-overlay'
+import Pagination from '@/components/Pagination/index'
 
 export default {
   name: 'product',
   components: {
-    Loading
+    Loading,
+    Pagination
   },
   data() {
     return {
@@ -16,9 +19,7 @@ export default {
     }
   },
   computed: {
-    getProducts() {
-      return this.$store.state.products
-    }
+    ...mapGetters('AdminProductModules', ['products', 'pagination'])
   },
   methods: {
     openUpModal(isNew, item) {
@@ -37,14 +38,14 @@ export default {
     },
     updateProduct() {
       if(this.isNew)
-        this.$store.dispatch('PRODUCT_ADD', this.tempProduct)
+        this.$store.dispatch('AdminProductModules/PRODUCT_ADD', this.tempProduct)
       else
-        this.$store.dispatch('PRODUCT_EDIT', this.tempProduct)
+        this.$store.dispatch('AdminProductModules/PRODUCT_EDIT', this.tempProduct)
 
       $('#productModal').modal('hide')
     },
     removeProduct() {
-      this.$store.dispatch('PRODUCT_REMOVE', this.tempProduct.id).then(() => {
+      this.$store.dispatch('AdminProductModules/PRODUCT_REMOVE', this.tempProduct.id).then(() => {
         $('#delProductModal').modal('hide')
       })
     },
@@ -69,9 +70,12 @@ export default {
         this.$set(this.tempProduct, 'imageUrl', res.data.imageUrl)
       })
     },
+    getProducts(page) {
+      this.$store.dispatch('AdminProductModules/PRODUCTS_GET', page)
+    }
   },
   mounted() {
-    this.$store.dispatch('PRODUCTS_GET')
+    this.$store.dispatch('AdminProductModules/PRODUCTS_GET')
   }
 }
 </script>

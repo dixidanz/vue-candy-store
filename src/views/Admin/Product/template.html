@@ -19,7 +19,7 @@
     </thead>
     <tbody>
       <tr
-        v-for="item in getProducts"
+        v-for="item in products"
         :key="item.id"
       >
         <td>{{ item.category }}</td>
@@ -49,6 +49,10 @@
       </tr>
     </tbody>
   </table>
+  <Pagination
+    :pagination="pagination"
+    @update-page="getProducts"
+  ></Pagination>
   <!-- Modal -->
   <div
     class="modal fade"
@@ -223,7 +227,7 @@
           <button
             type="button"
             class="btn btn-primary"
-            @click="updateProduct(true)"
+            @click="updateProduct"
           >確認</button>
         </div>
       </div>

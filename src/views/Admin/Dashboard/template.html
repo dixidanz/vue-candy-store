@@ -27,7 +27,7 @@
                 class="nav-link"
                 to="/product"
               >
-                <span data-feather="file"></span>
+                <i class="fab fa-product-hunt"></i>
                 Product
               </router-link>
             </li>
@@ -36,8 +36,17 @@
                 class="nav-link"
                 to="/order"
               >
-                <span data-feather="file"></span>
+                <i class="fas fa-file"></i>
                 Order
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link
+                class="nav-link"
+                to="/coupon"
+              >
+                <i class="fas fa-cart-arrow-down"></i>
+                Coupon
               </router-link>
             </li>
           </ul>
@@ -48,7 +57,6 @@
         class="col-md-9 ml-sm-auto col-lg-10 px-4"
       >
         <router-view></router-view>
-        <Pagination />
       </main>
     </div>
   </div>

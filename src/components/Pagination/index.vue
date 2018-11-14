@@ -1,14 +1,16 @@
 <script>
 export default {
   name: 'pagination',
-  computed: {
-    pagination() {
-      return this.$store.state.pagination
+  props: {
+    pagination: {
+      type: Object,
+      required: true
     }
   },
   methods: {
     updatePage(page) {
-      this.$store.dispatch('PRODUCTS_GET', page)
+      // this.$store.dispatch('PRODUCTS_GET', page)
+      this.$emit('update-page', page)
     }
   }
 }
