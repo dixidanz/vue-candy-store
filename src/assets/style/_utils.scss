@@ -1,3 +1,11 @@
 $primary: #AAE8D9;
 $secondary: #F8EF53;
 $accent:#EE255C;
+
+$phone: '(max-width: 600px)' !default;
+
+@mixin media($query: $desktop) {
+  @media #{$query} {
+    @content;
+  }
+}
