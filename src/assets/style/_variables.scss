@@ -74,6 +74,7 @@ $colors: map-merge(
 //#EE255C
 $primary:       #AAE8D9;//$blue !default;
 $secondary:     #F8EF53;//$gray-600 !default;
+$accent:        #EE255C;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -87,7 +88,7 @@ $theme-colors: map-merge(
   (
     "primary":    $primary,
     "secondary":  $secondary,
-    "accent":     #EE255C,
+    "accent":     $accent,
     "success":    $success,
     "info":       $info,
     "warning":    $warning,

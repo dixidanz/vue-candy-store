@@ -1,9 +1,11 @@
 <script>
 import Navbar from '@/components/Navbar/index';
+import FooterComponent from '@/components/Footer/index';
 export default {
   name: 'index',
   components: {
-    Navbar
+    Navbar,
+    FooterComponent
   }
 }
 </script>

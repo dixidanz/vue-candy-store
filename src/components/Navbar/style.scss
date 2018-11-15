@@ -1,4 +1,4 @@
-// @import '~@/assets/style/variables';
+@import '~@/assets/style/utils';
 .navbar{
   max-width: 940px;
   margin: auto;
@@ -17,7 +17,7 @@
       text-align: center;
       text-decoration: none;
       font-weight: 900;
-      font-size: 36px;
+      font-size: 38px;
     }
   }
   nav {
