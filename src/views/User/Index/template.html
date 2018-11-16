@@ -1,5 +1,14 @@
 <div class="index">
   <Navbar />
   <Carousel />
+  <div
+    class="row m-auto"
+    style="max-width: 1024px"
+  >
+    <div class="col-md-3 mt-5">
+      <Categories :categories="categories"></Categories>
+    </div>
+    <div class="col-md-9"></div>
+  </div>
   <FooterComponent />
 </div>
