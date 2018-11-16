@@ -6,6 +6,7 @@ import AdminOrderModules from '@/store/modules/AdminOrder'
 import AdminCouponModules from '@/store/modules/AdminCoupon'
 
 import UserProductsModules from '@/store/modules/UserProducts'
+import UserCartModules from '@/store/modules/UserCart'
 
 
 Vue.use(Vuex)
@@ -16,7 +17,8 @@ export default new Vuex.Store({
     AdminProductModules,
     AdminOrderModules,
     AdminCouponModules,
-    UserProductsModules
+    UserProductsModules,
+    UserCartModules
   },
   state: {
     loading: false,

@@ -16,7 +16,7 @@
           class="card__title"
           href="jvavscript:;"
         >{{ product.title }}</a>
-        <div class="card__description">{{ product.description }}</div>
+        <div class="card__description text-truncate">{{ product.description }}</div>
         <div class="card__price">
           <div class="card__originPrice">NT{{ product.origin_price | currency}}</div>
           <div class="card__specialPrice">NT{{ product.price | currency }}</div>
@@ -24,7 +24,13 @@
         <a
           href="javascrip:;"
           class="card__addCart"
-        >加入購物車</a>
+          @click="addCart(product.id)"
+        ><i
+            class="fas fa-spinner fa-spin"
+            v-if="loadingItem === product.id"
+          ></i>
+          <span v-else>放入購物車</span>
+        </a>
       </div>
     </div>
   </div>
