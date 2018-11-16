@@ -8,6 +8,11 @@ export default {
       required: true,
       default: ['全部商品']
     }
+  },
+  methods: {
+    updateCategory(category) {
+      this.$store.commit('UserProductsModules/updateCategory', category)
+    }
   }
 }
 </script>

@@ -11,8 +11,13 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'index',
-      component: () => import('./views/User/Index/index')
+      component: () => import('./views/User/Index/index'),
+      children: [
+        {
+          path: '',
+          component: () => import('./views/User/Products/index'),
+        }
+      ]
     },
     {
       path: '/login',

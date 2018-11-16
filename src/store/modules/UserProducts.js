@@ -9,7 +9,8 @@ export default ({
   namespaced: true,
   state: {
     products: [],
-    pagination: {}
+    pagination: {},
+    currentCategory: '全部商品'
   },
   mutations: {
     getProduct: (state, products) => {
@@ -18,6 +19,9 @@ export default ({
     getPagination: (state, pagination) => {
       state.pagination = pagination
     },
+    updateCategory: (state, category) => {
+      state.currentCategory = category
+    }
   },
   actions: {
     PRODUCTS_GET: ({ commit }, page = 1) => {
@@ -41,6 +45,14 @@ export default ({
       const categories = Array.from(category)
       categories.unshift('全部商品')
       return categories
+    },
+    products: (state) => {
+      if (!state.currentCategory || state.currentCategory === "全部商品")
+        return state.products
+      else
+        return state.products.filter(item => {
+          return item.category === state.currentCategory
+        })
     }
   }
 })

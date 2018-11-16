@@ -1,0 +1,74 @@
+@import '~@/assets/style/utils';
+.card {
+  width: 100%;
+  border: none;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.075);
+  transition: box-shadow .2s;
+  &:hover{
+    box-shadow:0 8px 24px #e2e2e2;
+    }
+  &__img {
+    width: 100%;
+    height: 150px;
+    background-position: center center;
+    background-size: cover;
+  }
+  &__category {
+    background-color: lighten($accent, 15%);
+    color: #eee;
+    width: 50px;
+    line-height: 20px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 2px;
+    box-shadow: 3px 3px px #ccc
+  }
+  &__title {
+    color: $primary;
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-decoration: none;
+  }
+  &__description {
+    color: #767676;
+    margin-left: 10px;
+  }
+  &__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 10px;
+    letter-spacing: 2px;
+  }
+  &__originPrice {
+    text-decoration: line-through;
+    font-size: 14px;
+    color: #767676;
+  }
+  &__specialPrice {
+    font-size: 20px;
+    color: $accent;
+    font-weight: 700;
+  }
+  &__addCart {
+    display: block;
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+    background-color: $secondary;
+    color: $accent;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: all .5s;
+    &:hover {
+      background-color: darken($secondary, 15%);
+      color: lighten($accent, 5%);
+    }
+  }
+}
