@@ -25,10 +25,10 @@ export default ({
   },
   actions: {
     CARTS_GET: ({ commit }) => {
-      // commit('updateLoading', true, { root: true })
+      commit('updateLoading', true, { root: true })
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`
       axios.get(api).then(res => {
-        // commit('updateLoading', false, { root: true })
+        commit('updateLoading', false, { root: true })
         if (!res.data.success) return false
         commit('getCarts', res.data.data)
       })

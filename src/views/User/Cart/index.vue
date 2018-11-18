@@ -1,11 +1,17 @@
 <script>
 import CartList from '@/components/CartList'
+import OrderForm from '@/components/OrderForm'
+import { mapGetters } from 'vuex';
 export default {
   name: 'cart',
   components: {
-    CartList
+    CartList,
+    OrderForm
   },
   computed: {
+    ...mapGetters('UserCartModules', [
+      'cartCount'
+    ])
   },
   mounted() {
     this.$store.dispatch('UserCartModules/CARTS_GET')

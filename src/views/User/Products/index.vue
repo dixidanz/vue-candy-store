@@ -2,7 +2,7 @@
 import Carousel from '@/components/Carousel/index';
 import Categories from '@/components/Categories/index';
 import ProductList from '@/components/ProductList/index';
-import Cart from '@/components/Cart/index';
+import CartList from '@/components/CartList/index';
 
 import { mapGetters } from 'vuex'
 export default {
@@ -11,7 +11,7 @@ export default {
     Carousel,
     Categories,
     ProductList,
-    Cart
+    CartList
   },
   computed: {
     ...mapGetters('UserProductsModules', [

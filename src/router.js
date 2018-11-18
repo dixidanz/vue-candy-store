@@ -20,6 +20,10 @@ export default new Router({
         {
           path: '/cart',
           component: () => import('./views/User/Cart/index'),
+        },
+        {
+          path: '/checkout/:orderId',
+          component: () => import('./views/User/Checkout/index'),
         }
       ]
     },

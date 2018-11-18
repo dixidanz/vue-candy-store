@@ -13,6 +13,13 @@ axios.defaults.withCredentials = true
 Vue.filter('currency', currencyFilter)
 Vue.filter('timestamp', timestamp)
 
+import zhTWValidate from 'vee-validate/dist/locale/zh_TW';
+import VeeValidate, { Validator } from 'vee-validate';
+Validator.localize('zh_TW', zhTWValidate);
+Vue.use(VeeValidate, {
+  locale: 'zh_TW',
+});
+
 new Vue({
   router,
   store,
