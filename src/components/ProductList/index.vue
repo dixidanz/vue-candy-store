@@ -20,6 +20,9 @@ export default {
         qty: 1
       }
       this.$store.dispatch('UserCartModules/CART_ADD', cart)
+    },
+    productDetail(id) {
+      this.$router.push(`/product/${id}`)
     }
   },
   mounted() {

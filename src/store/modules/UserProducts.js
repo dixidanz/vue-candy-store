@@ -10,10 +10,11 @@ export default ({
   state: {
     products: [],
     pagination: {},
-    currentCategory: '全部商品'
+    currentCategory: '全部商品',
+    product: {},
   },
   mutations: {
-    getProduct: (state, products) => {
+    getProducts: (state, products) => {
       state.products = products
     },
     getPagination: (state, pagination) => {
@@ -21,6 +22,9 @@ export default ({
     },
     updateCategory: (state, category) => {
       state.currentCategory = category
+    },
+    getProduct: (state, product) => {
+      state.product = product
     }
   },
   actions: {
@@ -30,8 +34,17 @@ export default ({
       axios.get(api).then(res => {
         commit('updateLoading', false, { root: true })
         if (!res.data.success) return false
-        commit('getProduct', res.data.products)
+        commit('getProducts', res.data.products)
         commit('getPagination', res.data.pagination)
+      })
+    },
+    PRODUCT_GET: ({ commit }, id) => {
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`
+      commit('updateLoading', true, { root: true })
+      axios.get(api).then(res => {
+        commit('updateLoading', false, { root: true })
+        if (!res.data.success) return false
+        commit('getProduct', res.data.product)
       })
     }
   },

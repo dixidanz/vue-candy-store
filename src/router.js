@@ -18,6 +18,10 @@ export default new Router({
           component: () => import('./views/User/Products/index'),
         },
         {
+          path: '/product/:productId',
+          component: () => import('./views/User/Product/index'),
+        },
+        {
           path: '/cart',
           component: () => import('./views/User/Cart/index'),
         },
@@ -38,19 +42,19 @@ export default new Router({
       component: () => import('./views/Admin/Dashboard/index'),
       children: [
         {
-          path: '/product',
+          path: '/admin/product',
           name: 'product',
           component: () => import('./views/Admin/Product/index'),
           meta: { requiresAuth: true },
         },
         {
-          path: '/order',
+          path: '/admin/order',
           name: 'order',
           component: () => import('./views/Admin/Order/index'),
           meta: { requiresAuth: true },
         },
         {
-          path: '/coupon',
+          path: '/admin/coupon',
           name: 'coupon',
           component: () => import('./views/Admin/Coupon/index'),
           meta: { requiresAuth: true },

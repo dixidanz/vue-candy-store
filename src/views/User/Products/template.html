@@ -11,13 +11,5 @@
       <product-list :products="products"></product-list>
     </div>
   </div>
-  <div class="cart">
-    <router-link
-      to="/cart"
-      class="cart__link"
-    >
-      <img src="@/assets/img/shopping-basket.png" />
-      <span class="count">{{ cartCount }}</span>
-    </router-link>
-  </div>
+  <cart-icon />
 </div>

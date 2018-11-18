@@ -27,6 +27,11 @@
             >單價</th>
             <th
               scope="col"
+              class="text-right"
+              Width="200px"
+            >小計</th>
+            <th
+              scope="col"
               Width="120px"
             >刪除</th>
           </tr>
@@ -38,6 +43,7 @@
           >
             <td>{{ cart.product.title }}</td>
             <td>{{ cart.qty }} {{ cart.product.unit }}</td>
+            <td class="text-monospace text-right">NT{{ cart.product.price | currency }}</td>
             <td class="text-monospace text-right">NT{{ cart.total | currency }}</td>
             <td><i
                 class="fas fa-trash-alt remove"

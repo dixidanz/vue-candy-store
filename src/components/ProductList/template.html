@@ -10,11 +10,13 @@
           href="javascript:;"
           class="card__img"
           :style="{ backgroundImage: 'url('+ product.imageUrl + ')' }"
+          @click="productDetail(product.id)"
         ></a>
         <div class="card__category">{{ product.category }}</div>
         <a
           class="card__title"
           href="jvavscript:;"
+          @click="productDetail(product.id)"
         >{{ product.title }}</a>
         <div class="card__description text-truncate">{{ product.description }}</div>
         <div class="card__price">

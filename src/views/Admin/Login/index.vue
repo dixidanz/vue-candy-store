@@ -18,7 +18,7 @@ export default {
       axios.post(api, this.user).then(res => {
         this.$store.commit('updateLoading', false)
         if(res.data.success)
-          this.$router.push('/product')
+          this.$router.push('/admin/product')
       }).catch(err => {
         console.log(err)
       })

@@ -1,0 +1,38 @@
+<div class="product">
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-md-6">
+        <div
+          :style="{ backgroundImage: `url(${product.imageUrl})` }"
+          class="productImg"
+        ></div>
+      </div>
+      <div class="col-md-6 d-flex flex-column justify-content-center">
+        <span class="category">{{ product.category }}</span>
+        <h2 class="title">{{ product.title }}</h2>
+        <p class="content">{{ product.content }}</p>
+        <div class="price border-top  border-primary">
+          <span class="originPrice text-monospace">NT{{ product.origin_price | currency }}</span>
+          <span class="specialPrice text-monospace">NT{{ product.price | currency }}</span>
+        </div>
+        <div class="count">
+          <a
+            href="javascript:;"
+            @click="addCount(-1)"
+          ><i class="fas fa-minus"></i></a>
+          <span>{{ count }}</span>
+          <a
+            href="javascript:;"
+            @click="addCount(1)"
+          ><i class="fas fa-plus"></i></a>
+        </div>
+        <a
+          href="javascipr:;"
+          class="addCart btn btn-block btn-primary"
+          @click="addCart(product.id)"
+        >丟入購物車</a>
+      </div>
+    </div>
+  </div>
+  <cart-icon />
+</div>
