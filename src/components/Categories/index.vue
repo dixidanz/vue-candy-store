@@ -1,5 +1,4 @@
 <script>
-import { mapGetters } from 'vuex';
 export default {
   name: 'categories',
   props: {
@@ -7,6 +6,11 @@ export default {
       type: Array,
       required: true,
       default: ['全部商品']
+    }
+  },
+  computed: {
+    currentCategory() {
+      return this.$store.state.UserProductsModules.currentCategory
     }
   },
   methods: {

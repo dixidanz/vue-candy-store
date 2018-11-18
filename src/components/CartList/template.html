@@ -1,0 +1,104 @@
+<div class="cartList">
+  <div class="container">
+    <div class="title">
+      <img src="@/assets/img/shopping-basket.png" />
+      <h2>購物車</h2>
+    </div>
+    <div
+      class="noCart my-4  "
+      v-if="!cartCount"
+    >購物車沒東西！快去選購吧！</div>
+    <div
+      class="cart my-4"
+      v-else
+    >
+      <table class="table text-center">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col">品名</th>
+            <th
+              scope="col"
+              Width="120px"
+            >數量</th>
+            <th
+              scope="col"
+              class="text-right"
+              Width="200px"
+            >單價</th>
+            <th
+              scope="col"
+              Width="120px"
+            >刪除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="cart in cartItem"
+            :key="cart.id"
+          >
+            <td>{{ cart.product.title }}</td>
+            <td>{{ cart.qty }} {{ cart.product.unit }}</td>
+            <td class="text-monospace text-right">NT{{ cart.total | currency }}</td>
+            <td><i
+                class="fas fa-trash-alt remove"
+                @click="removeCart(cart.id)"
+              ></i></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">總計</td>
+            <td
+              colspan="2"
+              class="text-monospace"
+            >
+              NT{{ cartTotal | currency }}
+              <p>
+
+              </p>
+            </td>
+          </tr>
+          <tr v-if="cartFinalTotal !== cartTotal">
+            <td
+              colspan="2"
+              class="text-monospace text-accent"
+            >優惠價</td>
+            <td
+              colspan="2"
+              class="text-monospace"
+            >
+              NT{{ cartFinalTotal | currency }}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="row d-flex justify-content-end mr-3">
+        <div class="col-4">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="請輸入優惠碼"
+              aria-describedby="button-addon2"
+              v-model.trim="couponCode"
+            >
+            <div class="input-group-append">
+              <button
+                class="btn btn-primary"
+                type="button"
+                id="button-addon2"
+                @click="couponApply"
+              >套用</button>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <span
+              class="text-accent"
+              v-if="couponMessage"
+            >{{ couponMessage }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

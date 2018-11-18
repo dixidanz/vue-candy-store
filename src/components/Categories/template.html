@@ -3,5 +3,6 @@
     href="javascript:;"
     v-for="category in categories"
     @click="updateCategory(category)"
+    :class="{ 'active': category === currentCategory }"
   >{{ category }}</a>
 </div>

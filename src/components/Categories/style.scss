@@ -20,4 +20,7 @@
       border: 1px solid lighten($accent, 10%);
     }
   }
+  .active {
+    border: 1px solid lighten($accent, 10%);
+  }
 }

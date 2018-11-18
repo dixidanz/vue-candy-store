@@ -1,14 +1,23 @@
 <div class="products">
-  <Carousel />
+  <carousel />
   <div
     class="row mx-auto mb-5"
     style="max-width: 1024px"
   >
     <div class="col-md-3 mt-5">
-      <Categories :categories="categories"></Categories>
+      <categories :categories="categories"></categories>
     </div>
     <div class="col-md-9 mt-5">
-      <ProductList :products="products"></ProductList>
+      <product-list :products="products"></product-list>
     </div>
+  </div>
+  <div class="cart">
+    <router-link
+      to="/cart"
+      class="cart__link"
+    >
+      <img src="@/assets/img/shopping-basket.png" />
+      <span class="count">{{ cartCount }}</span>
+    </router-link>
   </div>
 </div>
