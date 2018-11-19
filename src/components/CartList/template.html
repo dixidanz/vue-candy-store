@@ -44,7 +44,12 @@
             v-for="cart in cartItem"
             :key="cart.id"
           >
-            <td>{{ cart.product.title }}</td>
+            <td>{{ cart.product.title }}
+              <span
+                class="badge badge-primary"
+                v-if="cart.coupon"
+              >優惠</span>
+            </td>
             <td>{{ cart.qty }} {{ cart.product.unit }}</td>
             <td class="text-monospace text-right  d-none d-md-table-cell">NT{{ cart.product.price | currency }}</td>
             <td class="text-monospace text-right">NT{{ cart.total | currency }}</td>
@@ -71,7 +76,12 @@
             <td
               colspan="2"
               class="text-monospace text-accent"
-            >優惠價</td>
+            >優惠價
+              <span
+                class="badge badge-primary"
+                v-if="cartItem[0].coupon.code"
+              >{{ cartItem[0].coupon.code }}</span>
+            </td>
             <td
               colspan="2"
               class="text-monospace"

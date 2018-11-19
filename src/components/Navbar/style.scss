@@ -38,4 +38,7 @@
       }
     }
   }
+  .router-link-exact-active {
+    box-shadow: inset 0px -4px 0px $accent;
+  }
 }
