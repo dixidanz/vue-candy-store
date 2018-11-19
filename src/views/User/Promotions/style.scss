@@ -1,3 +1,55 @@
+@import '~@/assets/style/utils';
 .promotions{
-  
+  max-width: 1024px;
+  min-height: calc(100vh - 168px - 121px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__item {
+    display: flex;
+    position: relative;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    &__left {
+      border-style: solid;
+      border-width: 50px 0 50px 86.6px;
+      border-color: transparent transparent transparent $secondary;
+      border-radius: 40%;
+      position: absolute;
+      left: -50px;
+    } 
+    &__content {
+      width: 300px;
+      height: auto;
+      background-color: lighten($primary, 10%);
+      border-radius: 50px;
+      position: relative;
+      z-index: 10;
+      font-size: 20px;
+      color: $accent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      letter-spacing: 2px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.075);
+      .code {
+        background-color: $accent;
+        color: lighten($primary, 10%);
+        padding: 5px;
+      }
+    }
+    &__right {
+      border-style: solid;
+      border-width: 50px 86.6px 50px 0;
+      border-color: transparent $secondary transparent transparent;
+      border-radius: 40%;
+      position: absolute;
+      right: -50px;
+      
+    }
+  }
 }
