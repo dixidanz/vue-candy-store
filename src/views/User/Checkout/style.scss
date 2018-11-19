@@ -1,3 +1,33 @@
+@import '~@/assets/style/utils';
 .checkout{
-  
+  max-width: 1024px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .orderId {
+    font-size: 24px;
+    border: 2px solid $accent;
+    padding: 10px;
+    box-sizing: border-box;
+    color: $accent;
+    @include media($phone) {
+      font-size: 20px;
+    }
+  }
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > img {
+      width: 40px;
+      margin-right: 20px;
+    }
+    > h2 {
+      font-size: 30px;
+      margin: 0;
+      color: $primary;
+      font-weight: 700;
+    }
+  }
 }
