@@ -6,12 +6,13 @@
       :key="product.id"
     >
       <div class="card">
-        <a
-          href="javascript:;"
-          class="card__img"
-          :style="{ backgroundImage: 'url('+ product.imageUrl + ')' }"
-          @click="productDetail(product.id)"
-        ></a>
+        <div class="card__img">
+          <a
+            href="javascript:;"
+            :style="{ backgroundImage: 'url('+ product.imageUrl + ')' }"
+            @click="productDetail(product.id)"
+          ></a>
+        </div>
         <div class="card__category">{{ product.category }}</div>
         <a
           class="card__title"

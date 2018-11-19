@@ -8,6 +8,15 @@
     height: 500px;
     background-position: center center;
     background-size: cover;
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.09);
+    transition: box-shadow .2s;
+    &:hover{
+      box-shadow:12px 12px 24px #e2e2e2;
+    }
+    @include media($phone) {
+      height: auto;
+      min-height: 300px;
+    }
   }
   .category {
     background-color: lighten($accent, 15%);

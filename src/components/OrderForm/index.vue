@@ -18,7 +18,10 @@ export default {
     submitOrder() {
       this.$validator.validate().then(result => {
         if (result) {
-          this.$store.dispatch('UserOrderModules/ORDER_CREATE', this.form)
+          this.$store.dispatch('UserOrderModules/ORDER_CREATE', this.form).then(res => {
+            if(res.success)
+              this.$router.push(`/checkout/${res.orderId}`)
+          })
         }
       });
     }

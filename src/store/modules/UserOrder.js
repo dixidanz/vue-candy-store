@@ -15,11 +15,12 @@ export default ({
     ORDER_CREATE: ({ commit }, user) => {
       commit('updateLoading', true, { root: true })
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order`
-      axios.post(api, { data: user }).then(res => {
-        console.log(res.data)
-
-        commit('updateLoading', false, { root: true })
-        if (!res.data.success) return false
+      return new Promise((resolve) => {
+        axios.post(api, { data: user }).then(res => {
+          commit('updateLoading', false, { root: true })
+          if (!res.data.success) return false
+          resolve(res.data)
+        })
       })
     }
   },

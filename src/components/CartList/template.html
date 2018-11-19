@@ -15,25 +15,28 @@
       <table class="table text-center">
         <thead class="table-secondary">
           <tr>
-            <th scope="col">品名</th>
             <th
               scope="col"
-              Width="120px"
+              class="w-50"
+            >品名</th>
+            <th
+              scope="col"
+              Width="100px"
             >數量</th>
             <th
               scope="col"
-              class="text-right"
-              Width="200px"
+              class="text-right d-none d-md-table-cell"
+              Width="100px"
             >單價</th>
             <th
               scope="col"
               class="text-right"
-              Width="200px"
+              Width="120px"
             >小計</th>
             <th
               scope="col"
               Width="120px"
-            >刪除</th>
+            ></th>
           </tr>
         </thead>
         <tbody>
@@ -43,7 +46,7 @@
           >
             <td>{{ cart.product.title }}</td>
             <td>{{ cart.qty }} {{ cart.product.unit }}</td>
-            <td class="text-monospace text-right">NT{{ cart.product.price | currency }}</td>
+            <td class="text-monospace text-right  d-none d-md-table-cell">NT{{ cart.product.price | currency }}</td>
             <td class="text-monospace text-right">NT{{ cart.total | currency }}</td>
             <td><i
                 class="fas fa-trash-alt remove"
@@ -79,7 +82,7 @@
         </tfoot>
       </table>
       <div class="row d-flex justify-content-end mr-3">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
           <div class="input-group mb-3">
             <input
               type="text"
