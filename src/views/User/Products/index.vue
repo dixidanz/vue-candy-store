@@ -4,6 +4,7 @@ import Categories from '@/components/Categories/index';
 import ProductList from '@/components/ProductList/index';
 import CartList from '@/components/CartList/index';
 import CartIcon from '@/components/CartIcon/index';
+// import Pagination from '@/components/Pagination/index';
 
 import { mapGetters } from 'vuex'
 export default {
@@ -13,12 +14,14 @@ export default {
     Categories,
     ProductList,
     CartList,
-    CartIcon
+    CartIcon,
+    // Pagination
   },
   computed: {
     ...mapGetters('UserProductsModules', [
       'categories',
       'products',
+      // 'pagination'
     ]),
     ...mapGetters('UserCartModules', [
       'cartCount'

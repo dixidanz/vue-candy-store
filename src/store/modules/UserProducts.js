@@ -66,6 +66,9 @@ export default ({
         return state.products.filter(item => {
           return item.category === state.currentCategory
         })
+    },
+    pagination: (state) => {
+      return state.pagination
     }
   }
 })
