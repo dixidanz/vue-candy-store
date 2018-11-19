@@ -1,11 +1,17 @@
 <script>
+import $ from 'jquery'
 import { mapGetters } from 'vuex'
 import Pagination from '@/components/Pagination/index'
 
 export default {
   name: 'order',
   components: {
-    Pagination
+    Pagination,
+  },
+  data() {
+    return {
+      tempOrder: {}
+    }
   },
   computed: {
     ...mapGetters('AdminOrderModules', ['orders', 'pagination'])
@@ -13,6 +19,10 @@ export default {
   methods: {
     getOrders(page) {
       this.$store.dispatch('AdminOrderModules/ORDER_GET', page)
+    },
+    openUpModal(item) {
+      this.tempOrder = Object.assign({}, item)
+      $('#orderModal').modal('show')
     }
   },
   mounted() {

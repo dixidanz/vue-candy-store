@@ -12,8 +12,8 @@ export default ({
     pagination: {},
   },
   mutations: {
-    getOrder: (state, order) => {
-      state.order = order
+    getOrder: (state, orders) => {
+      state.orders = orders
     },
     getPagination: (state, pagination) => {
       state.pagination = pagination
@@ -28,6 +28,14 @@ export default ({
         if (!res.data.success) return false
         commit('getOrder', res.data.orders)
         commit('getPagination', res.data.pagination)
+      })
+    },
+    ORDER_EDIT: ({ commit, dispatch }, order) => {
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders/${order.id}`
+      axios.put(api, { data: order }).then(res => {
+        console.log(res.data)
+
+        if (!res.data.success) return false
       })
     }
   },
