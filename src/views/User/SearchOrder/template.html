@@ -1,0 +1,22 @@
+<div class="searchOrder">
+  <div class="title">
+    <img src="@/assets/img/resume.png" />
+    <h2>訂單查詢</h2>
+  </div>
+  <form
+    class="d-flex flex-column"
+    @submit.prevent="searchOrder"
+  >
+    <input
+      type="text"
+      class="searchText"
+      placeholder="訂單編號"
+      v-model.trim="orderId"
+    >
+    <button class="btn btn-primary mt-3">查詢</i></button>
+  </form>
+  <span
+    class="text-accent h5 mt-3"
+    v-if="errorMessage"
+  >{{ errorMessage }}</span>
+</div>

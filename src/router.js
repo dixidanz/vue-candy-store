@@ -18,6 +18,14 @@ export default new Router({
           component: () => import('./views/User/Products/index'),
         },
         {
+          path: '/search-order',
+          component: () => import('./views/User/SearchOrder/index'),
+        },
+        {
+          path: '/promotions',
+          component: () => import('./views/User/Promotions/index'),
+        },
+        {
           path: '/product/:productId',
           component: () => import('./views/User/Product/index'),
         },
@@ -61,5 +69,8 @@ export default new Router({
         },
       ]
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

@@ -1,0 +1,38 @@
+@import '~@/assets/style/utils';
+.searchOrder{
+  max-width: 1024px;
+  min-height: calc(100vh - 168px - 121px - 20px - 20px);
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > img {
+      width: 40px;
+      margin-right: 20px;
+    }
+    > h2 {
+      font-size: 30px;
+      margin: 0;
+      color: $primary;
+      font-weight: 700;
+    }
+  }
+  .searchText {
+    width: 300px;
+    line-height: 30px;
+    padding: 10px;
+    border: 2px solid $primary;
+    outline: none;
+    margin-top: 20px;
+    font-size: 24px;
+    color: $primary;
+    &::placeholder {
+      color: $primary;
+    }
+  }
+}

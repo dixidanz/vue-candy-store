@@ -30,10 +30,12 @@ export default ({
     ORDER_GET: ({ commit }, id) => {
       commit('updateLoading', true, { root: true })
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${id}`
-      axios.get(api).then(res => {
-        commit('updateLoading', false, { root: true })
-        if (!res.data.success) return false
-        commit('getOrder', res.data.order)
+      return new Promise((resolve) => {
+        axios.get(api).then(res => {
+          commit('updateLoading', false, { root: true })
+          resolve(res.data)
+          commit('getOrder', res.data.order)
+        })
       })
     },
     ORDER_PAY: ({ commit, dispatch }, id) => {
