@@ -23,6 +23,9 @@
       font-weight: 900;
       font-size: 38px;
     }
+    .router-link-exact-active {
+      box-shadow: none;
+    }
   }
   nav {
     > a {

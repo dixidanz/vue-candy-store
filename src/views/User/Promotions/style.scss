@@ -36,6 +36,9 @@
       padding: 10px;
       letter-spacing: 2px;
       box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.075);
+      @include media($phone) {
+        width: 200px;
+      }
       .code {
         background-color: $accent;
         color: lighten($primary, 10%);

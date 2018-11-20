@@ -1,16 +1,2 @@
-# vue-shop
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
+![首頁](https://i.imgur.com/ZGW2JSX.png)
+[DEMO](https://deliciousegg.github.io/vue-candy-store/#/)

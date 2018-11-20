@@ -21,7 +21,7 @@
   .category {
     background-color: lighten($accent, 15%);
     color: #eee;
-    width: 50px;
+    max-width: 100px;
     line-height: 20px;
     text-align: center;
     margin-top: 10px;

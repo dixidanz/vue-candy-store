@@ -17,7 +17,7 @@
   }
   .noCart {
     text-align: center;
-    width: 550px;
+    max-width: 550px;
     line-height: 150px;
     margin: auto;
     background-color: lighten($secondary, 20%);
@@ -25,5 +25,8 @@
     font-size: 30px;
     font-weight: 700;
     border-radius: 10px;
+    @include media($phone) {
+      font-size: 22px;
+    }
   }
 }
