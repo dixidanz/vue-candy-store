@@ -13,7 +13,7 @@ import UserOrderModules from '@/store/modules/UserOrder'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  strict: true,
+  strict: process.env.NODE_ENV !== "production",
   modules: {
     AdminProductModules,
     AdminOrderModules,

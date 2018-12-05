@@ -5,7 +5,6 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 export default ({
-  strict: true,
   namespaced: true,
   state: {
     loadingItem: '',
