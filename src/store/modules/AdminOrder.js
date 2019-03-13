@@ -4,11 +4,11 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-export default ({
+export default {
   namespaced: true,
   state: {
     orders: [],
-    pagination: {},
+    pagination: {}
   },
   mutations: {
     getOrder: (state, orders) => {
@@ -16,11 +16,13 @@ export default ({
     },
     getPagination: (state, pagination) => {
       state.pagination = pagination
-    },
+    }
   },
   actions: {
     ORDER_GET: ({ commit }, page = 1) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders?page=${page}`
+      const api = `${process.env.VUE_APP_APIPATH}/api/${
+        process.env.VUE_APP_CUSTOMPATH
+      }/admin/orders?page=${page}`
       commit('updateLoading', true, { root: true })
       axios.get(api).then(res => {
         commit('updateLoading', false, { root: true })
@@ -29,12 +31,22 @@ export default ({
         commit('getPagination', res.data.pagination)
       })
     },
-    ORDER_EDIT: ({ commit, dispatch }, order) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders/${order.id}`
+    ORDER_EDIT: ({ dispatch }, order) => {
+      const api = `${process.env.VUE_APP_APIPATH}/api/${
+        process.env.VUE_APP_CUSTOMPATH
+      }/admin/order/${order.id}`
       axios.put(api, { data: order }).then(res => {
-        console.log(res.data)
-
         if (!res.data.success) return false
+        dispatch('ORDER_GET')
+        dispatch(
+          'ALERT_SHOW',
+          {
+            isAlert: true,
+            status: 'success',
+            message: res.data.message
+          },
+          { root: true }
+        )
       })
     }
   },
@@ -46,4 +58,4 @@ export default ({
       return state.pagination
     }
   }
-})
+}

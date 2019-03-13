@@ -6,38 +6,159 @@
       <th>購買姓名</th>
       <th>總金額</th>
       <th>是否付款</th>
-      <!-- <th>編輯</th> -->
+      <th>編輯</th>
     </thead>
     <tbody>
-      <tr
-        v-for="order in orders"
-        :key="order.id"
-      >
+      <tr v-for="order in orders" :key="order.id">
         <td>{{ order.id }}</td>
         <td>{{ order.create_at | timestamp }}</td>
         <td>{{ order.user.name }}</td>
         <td class="text-right">{{ order.total | currency }}</td>
         <td>
-          <span
-            v-if="order.is_paid"
-            class="text-success"
-          >已付款</span>
-          <span
-            v-else
-            class="text-danger"
-          >未付款</span>
+          <span v-if="order.is_paid" class="text-success">已付款</span>
+          <span v-else class="text-danger">未付款</span>
         </td>
-        <!-- <td>
+        <td>
           <button
             class="btn btn-outline-primary btn-sm mr-1"
             @click="openUpModal(order)"
-          >編輯</button>
-        </td> -->
+          >
+            編輯
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
-  <Pagination
-    :pagination="pagination"
-    @update-page="getOrders"
-  ></Pagination>
+  <Pagination :pagination="pagination" @update-page="getOrders"></Pagination>
+
+  <div
+    class="modal fade"
+    id="orderModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">編輯訂單</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>訂單編號</label>
+            <span class="ml-4">{{ tempOrder.id }}</span>
+          </div>
+          <div class="form-group">
+            <label>訂單日期</label>
+            <span class="ml-4">{{ tempOrder.create_at | timestamp }}</span>
+          </div>
+          <div class="form-group">
+            <label>總金額</label>
+            <span class="ml-4">{{ tempOrder.total | currency }}</span>
+          </div>
+          <div class="form-group">
+            <label>留言</label>
+            <span class="ml-4">{{ tempOrder.message }}</span>
+          </div>
+          <div class="form-group">
+            <label>商品：</label>
+            <div class="my-auto" v-for="product in tempOrder.products">
+              {{ product.product.title }} {{ product.qty }}
+              {{ product.product.unit }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name">購買姓名</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              :class="{ 'is-invalid':  errors.has('name')}"
+              name="name"
+              v-model="tempOrderUser.name"
+              placeholder="請輸入購買姓名"
+              v-validate="'required'"
+            />
+            <span class="text-danger" v-if="errors.has('name')">必填</span>
+          </div>
+          <div class="form-group">
+            <label for="email">信箱</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              :class="{ 'is-invalid':  errors.has('email')}"
+              name="email"
+              v-model="tempOrderUser.email"
+              placeholder="請輸入信箱"
+              v-validate="'required|email'"
+            />
+            <span class="text-danger" v-if="errors.has('email')">{{
+              errors.first('email')
+            }}</span>
+          </div>
+          <div class="form-group">
+            <label for="tel">電話</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tel"
+              :class="{ 'is-invalid':  errors.has('phone')}"
+              name="phone"
+              v-model="tempOrderUser.tel"
+              placeholder="請輸入電話"
+              v-validate="{required:true,regex: /^[09]{2}[0-9]{8}$/}"
+            />
+            <span class="text-danger" v-if="errors.has('phone')"
+              >請輸入十碼手機號碼</span
+            >
+          </div>
+          <div class="form-group">
+            <label for="address">地址</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              :class="{ 'is-invalid':  errors.has('address')}"
+              name="address"
+              v-model="tempOrderUser.address"
+              placeholder="請輸入地址"
+              v-validate="'required'"
+            />
+            <span class="text-danger" v-if="errors.has('address')">必填</span>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                v-model="tempOrder.is_paid"
+                id="is_enabled"
+              />
+              <label class="form-check-label" for="is_enabled">
+                是否付款
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            取消
+          </button>
+          <button type="button" class="btn btn-primary" @click="updateOrder">
+            確認
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

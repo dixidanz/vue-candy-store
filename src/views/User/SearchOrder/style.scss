@@ -1,7 +1,7 @@
 @import '~@/assets/style/utils';
-.searchOrder{
+.searchOrder {
   max-width: 1024px;
-  min-height: calc(100vh - 168px - 121px - 20px - 20px);
+  min-height: calc(100vh - 168px - 121px);
   margin: auto;
   display: flex;
   flex-direction: column;
