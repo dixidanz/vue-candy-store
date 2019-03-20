@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
+import { apiUserProducts, apiUserProduct } from '@/api.js'
 
 Vue.use(Vuex)
 
@@ -28,9 +29,9 @@ export default ({
   },
   actions: {
     PRODUCTS_GET: ({ commit }, page = 1) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products?page=${page}`
+      // const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products?page=${page}`
       commit('updateLoading', true, { root: true })
-      axios.get(api).then(res => {
+      apiUserProducts(page).then(res => {
         commit('updateLoading', false, { root: true })
         if (!res.data.success) return false
         commit('getProducts', res.data.products)
@@ -38,9 +39,9 @@ export default ({
       })
     },
     PRODUCT_GET: ({ commit }, id) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`
+      // const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`
       commit('updateLoading', true, { root: true })
-      axios.get(api).then(res => {
+      apiUserProduct(id).then(res => {
         commit('updateLoading', false, { root: true })
         if (!res.data.success) return false
         commit('getProduct', res.data.product)

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
+import { apiAdminCouponsGet, apiAdminCouponAdd, apiAdminCouponEdit, apiAdminCouponRemove } from '@/api.js'
 
 Vue.use(Vuex)
 
@@ -20,9 +21,9 @@ export default ({
   },
   actions: {
     COUPONS_GET: ({ commit }, page = 1) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupons?page=${page}`
+      // const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupons?page=${page}`
       commit('updateLoading', true, { root: true })
-      axios.get(api).then(res => {
+      apiAdminCouponsGet().then(res => {
         commit('updateLoading', false, { root: true })
         if (!res.data.success) return false
         commit('getCoupons', res.data.coupons)
@@ -30,9 +31,8 @@ export default ({
       })
     },
     COUPON_ADD: ({ dispatch }, tempCoupon) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon`
-
-      axios.post(api, { data: tempCoupon }).then(res => {
+      // const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon`
+      apiAdminCouponAdd({ data: tempCoupon }).then(res => {
         if (!res.data.success) return false
         dispatch('COUPONS_GET')
         dispatch('ALERT_SHOW', {
@@ -43,9 +43,8 @@ export default ({
       })
     },
     COUPON_EDIT: ({ dispatch }, tempCoupon) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${tempCoupon.id}`
-
-      axios.put(api, { data: tempCoupon }).then(res => {
+      //const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${tempCoupon.id}`
+      apiAdminCouponEdit(tempCoupon.id, { data: tempCoupon }).then(res => {
         if (!res.data.success) return false
         dispatch('COUPONS_GET')
         dispatch('ALERT_SHOW', {
@@ -56,9 +55,8 @@ export default ({
       })
     },
     COUPON_REMOVE: ({ dispatch }, id) => {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${id}`
-
-      axios.delete(api).then(res => {
+      // const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${id}`
+      apiAdminCouponRemove(id).then(res => {
         if (!res.data.success)
           dispatch('ALERT_SHOW', {
             isAlert: true,
