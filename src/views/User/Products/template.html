@@ -8,7 +8,15 @@
       <categories :categories="categories"></categories>
     </div>
     <div class="col-md-9 mt-5">
-      <product-list :products="products"></product-list>
+      <div class="row">
+        <div
+          class="col-md-4 col-sm-6 col-12 mb-4"
+          v-for="product in products"
+          :key="product.id"
+        >
+          <product-card :product="product"></product-card>
+        </div>
+      </div>
       <!-- <pagination :pagination="pagination"></pagination> -->
     </div>
   </div>
