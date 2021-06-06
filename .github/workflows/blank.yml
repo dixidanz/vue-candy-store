@@ -8,13 +8,11 @@ on:
       - v*
           
 jobs:
-  build:
+  build:q
     runs-on: ubuntu-latest
     steps:      
       - name: Checkout 🛎️
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
 
       - name: Install and Build
         run: |
@@ -22,7 +20,7 @@ jobs:
           npm run build
           
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@master
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
