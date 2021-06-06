@@ -6,10 +6,13 @@ export default {
   components: {
     Alert,
   },
+  mounted() {
+    },
   methods: {
     signout() {
       const api = `${process.env.VUE_APP_APIPATH}/logout`
       
+      axios.defaults.headers.common['Authorization'] = this.$store.state.token
       axios.post(api, this.user).then(res => {
         if(res.data.success)
           this.$router.push('/login')

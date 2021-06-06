@@ -28,7 +28,8 @@ export default new Vuex.Store({
       isAlert: false,
       status: '',
       message: '',
-    }
+    },
+    token: ''
   },
   mutations: {
     updateLoading: (state, status) => {
@@ -36,6 +37,9 @@ export default new Vuex.Store({
     },
     alertHandler: (state, alert) => {
       state.alert = alert
+    },
+    setToken(state, token) {
+      state.token = token
     }
   },
   actions: {

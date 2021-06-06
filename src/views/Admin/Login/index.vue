@@ -17,8 +17,10 @@ export default {
       this.$store.commit('updateLoading', true)
       axios.post(api, this.user).then(res => {
         this.$store.commit('updateLoading', false)
-        if(res.data.success)
+        if(res.data.success){
+          this.$store.commit('setToken', res.data.token)
           this.$router.push('/admin/product')
+        }
       }).catch(err => {
         console.log(err)
       })

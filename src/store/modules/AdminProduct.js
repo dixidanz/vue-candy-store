@@ -24,10 +24,10 @@ export default ({
       // const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`
       commit('updateLoading', true, { root: true })
       apiAdminProductsGet().then(res => {
-        commit('updateLoading', false, { root: true })
         if (!res.data.success) return false
         commit('getProduct', res.data.products)
         commit('getPagination', res.data.pagination)
+        commit('updateLoading', false, { root: true })
       })
     },
     PRODUCT_ADD: ({ dispatch }, tempProduct) => {

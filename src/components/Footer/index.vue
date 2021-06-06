@@ -1,6 +1,11 @@
 <script>
 export default {
-  name: 'footerComponent'
+  name: 'footerComponent',
+  data() {
+    return {
+      year: new Date().getFullYear()
+    }
+  }
 }
 </script>
 
