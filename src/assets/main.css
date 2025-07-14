@@ -1,0 +1,23 @@
+:root {
+  --c-primary: #EE255C;
+  --c-secondary: #6ed8be;
+  --c-secondary-dark: #35c5a1;
+  --c-tertiary: #F8EF53;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title_img {
+  width: 40px;
+  margin-right: 20px;
+}
+
+.title_text {
+  font-size: 30px;
+  color: var(--c-secondary);
+  font-weight: 700;
+}

@@ -1,24 +1,9 @@
-<template>
-  <div id="app">
-    <loading v-if="loading"></loading>
-    <router-view />
-  </div>
-</template>
-
-<script>
-  import loading from '@/components/Loading/index'
-  export default{
-    name: "App",
-    components: {
-      loading
-    },
-    computed: {
-      loading() {
-        return this.$store.state.loading
-      }
-    }
-  }
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
 </script>
 
-<style lang="scss" src="@/assets/style/all.scss">
-</style>
+<template>
+  <div class="font-sans mx-auto max-w-screen-lg">
+    <RouterView />
+  </div>
+</template>
