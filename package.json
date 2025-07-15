@@ -23,7 +23,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@dixidan/eslint-config": "^1.0.1",
+    "@dixidan/eslint-config": "^1.1.0",
     "@iconify-json/carbon": "^1.2.10",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.15.32",

@@ -37,7 +37,7 @@ export async function applyCoupon(code: string): Promise<CouponResponse> {
 
 export async function deleteCart(id: Product['id']): Promise<boolean> {
   try {
-    const res = await request.delete(`/cart/${id}`)
+    await request.delete(`/cart/${id}`)
     return true
   } catch (error) {
     return false
@@ -78,7 +78,7 @@ export async function getOrder(id: string): Promise<OrderResponse> {
 
 export async function payOrder(id: string): Promise<boolean> {
   try {
-    const res = await request.post(`/pay/${id}`)
+    await request.post(`/pay/${id}`)
     return true
   } catch (error) {
     return false
