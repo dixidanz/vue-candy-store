@@ -13,7 +13,9 @@ const deleteCartHandler = async (id: Product['id']) => {
 const couponMessage = ref('')
 const applyCouponHandler = async (code: string) => {
   const res = await applyCoupon(code)
-  if (!res.success) {
+  if (res.success) {
+    await loadCarts()
+  } else {
     couponMessage.value = res.message
   }
 }
