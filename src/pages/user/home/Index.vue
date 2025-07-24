@@ -35,7 +35,7 @@ onMounted(async () => {
       class="col-span-3" />
     <section
       v-else
-      class="gap-x-3 gap-y-5 grid col-span-4 grid-cols-1 w-full md:col-span-3 md:grid-cols-3 sm:grid-cols-2">
+      class="gap-x-3 gap-y-5 grid col-span-4 grid-cols-1 w-full items-start md:col-span-3 md:grid-cols-3 sm:grid-cols-2">
       <ProductCard
         v-for="product of products"
         :key="product.id"

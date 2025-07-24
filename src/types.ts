@@ -26,7 +26,7 @@ export interface BaseResponse {
 }
 
 export interface ProductResponse extends BaseResponse {
-  product: Product
+  product?: Product
 }
 
 export interface ProductsResponse extends BaseResponse {

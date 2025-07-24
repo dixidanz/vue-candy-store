@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CartResponse, Product } from '@/types'
 
-const props = defineProps<{
+defineProps<{
   carts: CartResponse
   couponMessage: string
 }>()

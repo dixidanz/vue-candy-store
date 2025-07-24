@@ -20,9 +20,9 @@ export async function getProducts(page: number): Promise<ProductsResponse> {
   }
 }
 
-export async function getProduct(id: Product['id']): Promise<ProductResponse | BaseResponse> {
+export async function getProduct(id: Product['id']): Promise<ProductResponse> {
   try {
-    return request.get(`/product/${id}`)
+    return await request.get(`/product/${id}`)
   } catch (error) {
     return error as BaseResponse
   }
