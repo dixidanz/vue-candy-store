@@ -7,6 +7,23 @@ const promotions = [
   { code: '牙齒掉光光', discount: '87' },
   { code: '給你看牙醫', discount: '38' }
 ]
+
+const isCopyMessageShow = ref(false)
+const copiedPromotionCode = ref('')
+
+const showCopyMessage = (code: string) => {
+  copiedPromotionCode.value = code
+  isCopyMessageShow.value = true
+}
+
+const handleCopy = async (code: string) => {
+  try {
+    await copy(code)
+    showCopyMessage(code)
+  } catch (error) {
+    console.error('Failed to copy promotion code', error)
+  }
+}
 </script>
 
 <template>
@@ -26,7 +43,7 @@ const promotions = [
         v-for="promotion of promotions"
         :key="promotion.code"
         class="promotions"
-        @click="copy(promotion.code)">
+        @click="handleCopy(promotion.code)">
         <div class="promotions_content">
           點擊複製
           <strong class="promotions_code">{{ promotion.code }}</strong>
@@ -38,6 +55,10 @@ const promotions = [
   <TheFooter />
 
   <CartButton :count="carts.carts.length || 0" />
+
+  <Toast
+    v-model:show="isCopyMessageShow"
+    :message="`優惠碼 ${copiedPromotionCode} 已複製`" />
 </template>
 
 <style scoped>
